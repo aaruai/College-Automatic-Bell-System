@@ -40,25 +40,25 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyAuck07yNeMwLDBLaAp-SOoCe4vbVgjBoU",
 
     authDomain:
-        "YOUR_PROJECT.firebaseapp.com",
+        "college-automatic-bell-system.firebaseapp.com",
 
     databaseURL:
-        "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+        "https://college-automatic-bell-system-default-rtdb.asia-southeast1.firebasedatabase.app",
 
     projectId:
-        "YOUR_PROJECT_ID",
+        "college-automatic-bell-system",
 
     storageBucket:
-        "YOUR_PROJECT.firebasestorage.app",
+        "college-automatic-bell-system.firebasestorage.app",
 
     messagingSenderId:
-        "YOUR_MESSAGING_SENDER_ID",
+        "462089329529",
 
     appId:
-        "YOUR_APP_ID"
+        "1:462089329529:web:28ce99fd0f00d5a424ada8"
 };
 
 
