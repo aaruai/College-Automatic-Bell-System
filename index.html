@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="College Automatic Electrical Bell System"
+    >
+
+    <title>College Automatic Bell System</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOGIN PAGE
+    ====================================================== -->
+
+    <section id="loginPage" class="login-page">
+
+        <div class="login-container">
+
+            <div class="login-logo">
+                🔔
+            </div>
+
+            <h1>College Automatic Bell</h1>
+
+            <p class="login-subtitle">
+                Smart Electrical Bell Control System
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="loginEmail">
+                        Administrator Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter administrator email"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="primary-button"
+                >
+                    Login
+                </button>
+
+                <p
+                    id="loginMessage"
+                    class="login-message"
+                ></p>
+
+            </form>
+
+            <div class="login-security">
+
+                🔒 Authorized administrators only
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <section
+        id="appPage"
+        class="app-page hidden"
+    >
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="sidebar-logo">
+                    🔔
+                </div>
+
+                <div>
+
+                    <h2>Bell System</h2>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <button
+                    class="menu-item active"
+                    data-page="dashboardPage"
+                >
+                    <span>📊</span>
+                    Dashboard
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="schedulePage"
+                >
+                    <span>📅</span>
+                    Schedules
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="holidayPage"
+                >
+                    <span>🗓️</span>
+                    Holidays
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="vacationPage"
+                >
+                    <span>🏖️</span>
+                    Vacations
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="specialPage"
+                >
+                    <span>📝</span>
+                    Special / Exam
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="settingsPage"
+                >
+                    <span>⚙️</span>
+                    Settings
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div
+                    id="connectionStatus"
+                    class="connection-status offline"
+                >
+
+                    <span class="status-dot"></span>
+
+                    <span id="connectionText">
+                        Connecting...
+                    </span>
+
+                </div>
+
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+
+                    🚪 Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =============================================
+                 TOP BAR
+            ============================================== -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        id="mobileMenuButton"
+                        class="mobile-menu-button"
+                        type="button"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <h1 id="pageTitle">
+                            Dashboard
+                        </h1>
+
+                        <p id="pageSubtitle">
+                            College Automatic Bell Control
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="clock-box">
+
+                        <span
+                            id="currentDate"
+                        >
+                            --
+                        </span>
+
+                        <strong
+                            id="currentTime"
+                        >
+                            --:--:--
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">
+                            A
+                        </div>
+
+                        <div class="admin-info">
+
+                            <strong id="adminName">
+                                Administrator
+                            </strong>
+
+                            <span>
+                                Authorized User
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 DASHBOARD PAGE
+            ================================================== -->
+
+            <section
+                id="dashboardPage"
+                class="content-page active-page"
+            >
+
+                <div class="welcome-section">
+
+                    <div>
+
+                        <h2>
+                            College Bell Dashboard
+                        </h2>
+
+                        <p>
+                            Automatic schedule-based electrical bell control
+                        </p>
+
+                    </div>
+
+                    <div
+                        id="systemModeBadge"
+                        class="mode-badge"
+                    >
+                        SYSTEM READY
+                    </div>
+
+                </div>
+
+
+                <!-- SYSTEM STATUS CARDS -->
+
+                <div class="dashboard-cards">
+
+
+                    <div class="status-card">
+
+                        <div class="card-icon blue">
+                            🔔
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Bell Status
+                            </span>
+
+                            <strong id="bellStatus">
+                                OFF
+                            </strong>
+
+                            <small id="bellStatusText">
+                                Waiting for schedule
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <div class="card-icon green">
+                            📶
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Internet
+                            </span>
+
+                            <strong id="internetStatus">
+                                Checking
+                            </strong>
+
+                            <small>
+                                Wi-Fi connection
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <div class="card-icon purple">
+                            ⏱️
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Time Source
+                            </span>
+
+                            <strong id="timeSource">
+                                NTP
+                            </strong>
+
+                            <small>
+                                Automatic synchronization
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <div class="card-icon orange">
+                            📅
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Active Schedule
+                            </span>
+
+                            <strong id="activeScheduleCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Running schedules
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CURRENT SYSTEM INFORMATION -->
+
+                <div class="dashboard-grid">
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Current System
+                                </h3>
+
+                                <p>
+                                    Controller information
+                                </p>
+
+                            </div>
+
+                            <span
+                                id="controllerStatus"
+                                class="small-status offline"
+                            >
+                                Offline
+                            </span>
+
+                        </div>
+
+
+                        <div class="system-information">
+
+                            <div class="info-row">
+
+                                <span>
+                                    Controller
+                                </span>
+
+                                <strong>
+                                    ESP8266
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span>
+                                    Time Synchronization
+                                </span>
+
+                                <strong id="syncStatus">
+                                    Waiting
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span>
+                                    Local Backup Clock
+                                </span>
+
+                                <strong>
+                                    DS3231
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span>
+                                    Local Schedule
+                                </span>
+
+                                <strong id="localScheduleStatus">
+                                    Ready
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span>
+                                    System Mode
+                                </span>
+
+                                <strong id="systemMode">
+                                    Automatic
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVE SCHEDULE -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Active Schedule
+                                </h3>
+
+                                <p>
+                                    Currently selected schedule
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="activeScheduleBox"
+                            class="active-schedule-box"
+                        >
+
+                            <div class="empty-state">
+
+                                <div>
+                                    📅
+                                </div>
+
+                                <p>
+                                    No schedule selected
+                                </p>
+
+                                <small>
+                                    Activate a schedule from Schedules
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="panel quick-actions-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Quick Actions
+                            </h3>
+
+                            <p>
+                                Administrator controls
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <button
+                            id="manualBellButton"
+                            class="action-button bell-action"
+                            type="button"
+                        >
+
+                            🔔
+
+                            <span>
+                                Test Bell
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            id="refreshScheduleButton"
+                            class="action-button"
+                            type="button"
+                        >
+
+                            🔄
+
+                            <span>
+                                Sync Schedule
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            id="syncTimeButton"
+                            class="action-button"
+                            type="button"
+                        >
+
+                            🕐
+
+                            <span>
+                                Sync Time
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SCHEDULE PAGE
+            ================================================== -->
+
+            <section
+                id="schedulePage"
+                class="content-page"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <h2>
+                            Bell Schedules
+                        </h2>
+
+                        <p>
+                            Create and manage automatic bell schedules
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="addScheduleButton"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Add Schedule
+                    </button>
+
+                </div>
+
+
+                <!-- SCHEDULE FORM -->
+
+                <div
+                    id="scheduleFormPanel"
+                    class="panel form-panel hidden"
+                >
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3 id="scheduleFormTitle">
+                                Create New Schedule
+                            </h3>
+
+                            <p>
+                                Configure bell operation
+                            </p>
+
+                        </div>
+
+                        <button
+                            id="closeScheduleForm"
+                            class="close-button"
+                            type="button"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+
+                    <form id="scheduleForm">
+
+                        <input
+                            type="hidden"
+                            id="scheduleId"
+                        >
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="scheduleName">
+                                    Schedule Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="scheduleName"
+                                    placeholder="Example: Regular College"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="scheduleType">
+                                    Schedule Type
+                                </label>
+
+                                <select id="scheduleType">
+
+                                    <option value="regular">
+                                        Regular
+                                    </option>
+
+                                    <option value="special">
+                                        Special
+                                    </option>
+
+                                    <option value="exam">
+                                        Exam
+                                    </option>
+
+                                    <option value="event">
+                                        Event
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="startDate">
+                                    Start Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="startDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="endDate">
+                                    End Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="endDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="scheduleDays">
+                                    Days
+                                </label>
+
+                                <select
+                                    id="scheduleDays"
+                                    multiple
+                                >
+
+                                    <option value="monday">
+                                        Monday
+                                    </option>
+
+                                    <option value="tuesday">
+                                        Tuesday
+                                    </option>
+
+                                    <option value="wednesday">
+                                        Wednesday
+                                    </option>
+
+                                    <option value="thursday">
+                                        Thursday
+                                    </option>
+
+                                    <option value="friday">
+                                        Friday
+                                    </option>
+
+                                    <option value="saturday">
+                                        Saturday
+                                    </option>
+
+                                    <option value="sunday">
+                                        Sunday
+                                    </option>
+
+                                </select>
+
+                                <small>
+                                    Hold Ctrl to select multiple days
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="schedulePriority">
+                                    Priority
+                                </label>
+
+                                <select id="schedulePriority">
+
+                                    <option value="normal">
+                                        Normal
+                                    </option>
+
+                                    <option value="high">
+                                        High
+                                    </option>
+
+                                    <option value="override">
+                                        Holiday Override
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <label for="scheduleDescription">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="scheduleDescription"
+                                rows="3"
+                                placeholder="Example: Monday to Friday regular academic schedule"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                id="cancelScheduleButton"
+                                class="secondary-button"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Save Schedule
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- SCHEDULE LIST -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Available Schedules
+                            </h3>
+
+                            <p>
+                                Only activated schedules control the bell
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="scheduleList"
+                        class="schedule-list"
+                    >
+
+                        <div class="empty-state">
+
+                            <div>
+                                📅
+                            </div>
+
+                            <p>
+                                No schedules available
+                            </p>
+
+                            <small>
+                                Create your first schedule
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 HOLIDAY PAGE
+            ================================================== -->
+
+            <section
+                id="holidayPage"
+                class="content-page"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <h2>
+                            Holiday Management
+                        </h2>
+
+                        <p>
+                            Add holidays in advance
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="addHolidayButton"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Add Holiday
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="holidayFormPanel"
+                    class="panel form-panel hidden"
+                >
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Add Holiday
+                        </h3>
+
+                        <button
+                            id="closeHolidayForm"
+                            class="close-button"
+                            type="button"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+
+                    <form id="holidayForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="holidayName">
+                                    Holiday Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="holidayName"
+                                    placeholder="Example: Independence Day"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="holidayDate">
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="holidayDate"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                id="cancelHolidayButton"
+                                class="secondary-button"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Save Holiday
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Holiday List
+                            </h3>
+
+                            <p>
+                                Regular schedules will not operate on these dates
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="holidayList"
+                        class="holiday-list"
+                    >
+
+                        <div class="empty-state">
+
+                            <div>
+                                🗓️
+                            </div>
+
+                            <p>
+                                No holidays added
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VACATION PAGE
+            ================================================== -->
+
+            <section
+                id="vacationPage"
+                class="content-page"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <h2>
+                            Vacation Periods
+                        </h2>
+
+                        <p>
+                            Disable automatic bell operation during vacations
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="addVacationButton"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Add Vacation
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="vacationFormPanel"
+                    class="panel form-panel hidden"
+                >
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Add Vacation Period
+                        </h3>
+
+                        <button
+                            id="closeVacationForm"
+                            class="close-button"
+                            type="button"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+
+                    <form id="vacationForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="vacationName">
+                                    Vacation Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="vacationName"
+                                    placeholder="Example: Summer Vacation"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="vacationType">
+                                    Vacation Type
+                                </label>
+
+                                <select id="vacationType">
+
+                                    <option value="summer">
+                                        Summer Vacation
+                                    </option>
+
+                                    <option value="diwali">
+                                        Diwali Vacation
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="vacationStart">
+                                    Start Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="vacationStart"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="vacationEnd">
+                                    End Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="vacationEnd"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                id="cancelVacationButton"
+                                class="secondary-button"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Save Vacation
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Vacation List
+                            </h3>
+
+                            <p>
+                                Bell automatically remains OFF during these periods
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="vacationList"
+                        class="vacation-list"
+                    >
+
+                        <div class="empty-state">
+
+                            <div>
+                                🏖️
+                            </div>
+
+                            <p>
+                                No vacation periods added
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SPECIAL / EXAM PAGE
+            ================================================== -->
+
+            <section
+                id="specialPage"
+                class="content-page"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <h2>
+                            Special / Exam Schedules
+                        </h2>
+
+                        <p>
+                            Override holidays and regular schedules when required
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="addSpecialButton"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Add Special Schedule
+                    </button>
+
+                </div>
+
+
+                <div class="panel special-info">
+
+                    <div class="special-info-icon">
+                        ℹ️
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Holiday Override
+                        </strong>
+
+                        <p>
+                            Special or examination schedules with override
+                            priority can operate even when the selected date
+                            is marked as a holiday.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="specialFormPanel"
+                    class="panel form-panel hidden"
+                >
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Special Schedule
+                            </h3>
+
+                            <p>
+                                Create an examination or special-day schedule
+                            </p>
+
+                        </div>
+
+                        <button
+                            id="closeSpecialForm"
+                            class="close-button"
+                            type="button"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+
+                    <form id="specialForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="specialName">
+                                    Schedule Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="specialName"
+                                    placeholder="Example: Sunday Examination"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="specialDate">
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="specialDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="specialPriority">
+                                    Priority
+                                </label>
+
+                                <select id="specialPriority">
+
+                                    <option value="override">
+                                        Holiday Override
+                                    </option>
+
+                                    <option value="high">
+                                        High
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                id="cancelSpecialButton"
+                                class="secondary-button"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Save Special Schedule
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Special Schedules
+                            </h3>
+
+                            <p>
+                                Examination and exceptional schedules
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="specialList"
+                        class="special-list"
+                    >
+
+                        <div class="empty-state">
+
+                            <div>
+                                📝
+                            </div>
+
+                            <p>
+                                No special schedules
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SETTINGS PAGE
+            ================================================== -->
+
+            <section
+                id="settingsPage"
+                class="content-page"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <h2>
+                            System Settings
+                        </h2>
+
+                        <p>
+                            Configure controller and bell operation
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BELL SETTINGS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Bell Settings
+                            </h3>
+
+                            <p>
+                                Configure default bell behaviour
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="bellSettingsForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="shortBellDuration">
+                                    Short Bell Duration (seconds)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="shortBellDuration"
+                                    min="1"
+                                    max="60"
+                                    step="1"
+                                    value="4"
+                                >
+
+                                <small>
+                                    Example: 2, 3, 4 or 5 seconds
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="longBellDuration">
+                                    Long Bell Duration (seconds)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="longBellDuration"
+                                    min="1"
+                                    max="120"
+                                    step="1"
+                                    value="8"
+                                >
+
+                                <small>
+                                    Example: 7, 8, 10 or 15 seconds
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="timezone">
+                                    Time Zone
+                                </label>
+
+                                <select id="timezone">
+
+                                    <option value="Asia/Kolkata">
+                                        India - IST (UTC+05:30)
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="offlineMode">
+
+                                    Offline Operation
+
+                                </label>
+
+                                <select id="offlineMode">
+
+                                    <option value="enabled">
+                                        Enabled
+                                    </option>
+
+                                    <option value="disabled">
+                                        Disabled
+                                    </option>
+
+                                </select>
+
+                                <small>
+                                    Continue using locally stored schedule
+                                    when Wi-Fi is unavailable
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Save Bell Settings
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- TIME SYNCHRONIZATION -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Time Synchronization
+                            </h3>
+
+                            <p>
+                                NTP + local backup clock
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sync-grid">
+
+                        <div class="sync-item">
+
+                            <span>
+                                Primary Time
+                            </span>
+
+                            <strong>
+                                NTP
+                            </strong>
+
+                        </div>
+
+
+                        <div class="sync-item">
+
+                            <span>
+                                Backup Time
+                            </span>
+
+                            <strong>
+                                DS3231
+                            </strong>
+
+                        </div>
+
+
+                        <div class="sync-item">
+
+                            <span>
+                                Time Zone
+                            </span>
+
+                            <strong>
+                                IST
+                            </strong>
+
+                        </div>
+
+
+                        <div class="sync-item">
+
+                            <span>
+                                Sync Status
+                            </span>
+
+                            <strong id="settingsSyncStatus">
+                                Waiting
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        id="settingsSyncTimeButton"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        🕐 Synchronize Controller Time
+                    </button>
+
+                </div>
+
+
+                <!-- CONTROLLER -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                ESP8266 Controller
+                            </h3>
+
+                            <p>
+                                Controller communication information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-information">
+
+                        <div class="info-row">
+
+                            <span>
+                                Controller
+                            </span>
+
+                            <strong>
+                                ESP8266 NodeMCU
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span>
+                                Schedule Storage
+                            </span>
+
+                            <strong>
+                                Local Flash / LittleFS
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span>
+                                Cloud Database
+                            </span>
+
+                            <strong>
+                                Firebase
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span>
+                                Communication
+                            </span>
+
+                            <strong>
+                                Wi-Fi
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADMIN INFORMATION -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Administrator Access
+                            </h3>
+
+                            <p>
+                                Only authorized administrators can modify
+                                the system
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-access-box">
+
+                        <div class="access-icon">
+                            🔐
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Protected System
+                            </strong>
+
+                            <p>
+                                Schedule modification, holiday management,
+                                vacation management and controller settings
+                                are restricted to authorized administrator
+                                accounts.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="app-footer">
+
+                <span>
+                    College Automatic Electrical Bell System
+                </span>
+
+                <span>
+                    ESP8266 • Firebase • NTP • DS3231
+                </span>
+
+            </footer>
+
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         TOAST / NOTIFICATION
+    ====================================================== -->
+
+    <div
+        id="toast"
+        class="toast hidden"
+    >
+
+        <div id="toastIcon">
+            ✓
+        </div>
+
+        <div>
+
+            <strong id="toastTitle">
+                Success
+            </strong>
+
+            <p id="toastMessage">
+                Operation completed.
+            </p>
+
+        </div>
+
+        <button
+            id="closeToast"
+            type="button"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONFIRMATION MODAL
+    ====================================================== -->
+
+    <div
+        id="confirmModal"
+        class="modal-overlay hidden"
+    >
+
+        <div class="modal-box">
+
+            <div class="modal-icon">
+                ⚠️
+            </div>
+
+            <h3 id="confirmTitle">
+                Confirm Action
+            </h3>
+
+            <p id="confirmMessage">
+                Are you sure?
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    id="confirmCancel"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    id="confirmOK"
+                    class="danger-button"
+                    type="button"
+                >
+                    Confirm
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         Firebase and application logic will be loaded here.
+    ====================================================== -->
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
